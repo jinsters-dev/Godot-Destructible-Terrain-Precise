@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqsjq4c8lrcvi"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_t33gq"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_t33gq")
+min_movement_update = 0
+
+[node name="Quadrants" type="Node2D" parent="."]
+
+[node name="CarveArea" type="Polygon2D" parent="."]
+color = Color(1, 0.635294, 0.635294, 0.784314)
+
+[node name="RigidBodies" type="Node2D" parent="."]

@@ -1,8 +1,8 @@
 extends Node2D
 
 var default_quadrant_polygon: Array = []
-onready var static_body = $StaticBody2D
-onready var ColPol = preload("res://ColPol.tscn")
+@onready var static_body = $StaticBody2D
+@onready var ColPol = preload("res://scenes/ColPol.tscn")
 
 func _ready():
 	init_quadrant()
@@ -25,7 +25,7 @@ func reset_quadrant():
 	init_quadrant()
 
 
-func carve(clipping_polygon: PoolVector2Array):
+func carve(clipping_polygon: PackedVector2Array):
 	"""
 	Carves `clipping_polygon` away from the quadrant
 	"""
@@ -46,11 +46,11 @@ func carve(clipping_polygon: PoolVector2Array):
 					static_body.add_child(_new_colpol(clipped_polygons[i + 1]))
 
 
-func add(adding_polygon: PoolVector2Array):
+func add(adding_polygon: PackedVector2Array):
 	"""
 	Adds the intersecting parts of `adding_polygon` to the quadrant
 	"""
-	var intersected_adding_polygons = Geometry.intersect_polygons_2d(default_quadrant_polygon, adding_polygon)
+	var intersected_adding_polygons = Geometry2D.intersect_polygons(default_quadrant_polygon, adding_polygon)
 	if len(intersected_adding_polygons) == 0:
 		# adding_polygon is not within the quadrant
 		return
@@ -81,7 +81,6 @@ func _new_colpol(polygon):
 	Returns ColPol instance
 	with assigned polygon
 	"""
-	var colpol = ColPol.instance()
+	var colpol = ColPol.instantiate()
 	colpol.polygon = polygon
 	return colpol
-

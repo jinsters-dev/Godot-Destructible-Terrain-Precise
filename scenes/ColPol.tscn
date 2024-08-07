@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://do01w865wsuyx"]
+
+[ext_resource type="Script" path="res://scripts/ColPol.gd" id="2"]
+
+[node name="ColPol" type="CollisionPolygon2D"]
+script = ExtResource("2")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
